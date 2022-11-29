@@ -19,8 +19,12 @@ public class Terrain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String nom;
+	private String name;
+	private int numberOfPlayer;
+	private String disponibility_from;
+	private String disponibility_to;
+	private int price;
+	private String image;
 	private String location;
-	private double prix;
-	private boolean disponibilite;
+	private String description;
 }
