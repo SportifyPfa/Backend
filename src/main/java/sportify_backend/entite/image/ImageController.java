@@ -19,7 +19,6 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-
     @GetMapping(value = "/{imgFileName}",produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<Resource> loadImage(@PathVariable("imgFileName") String imgFileName) throws IOException {
         Resource resource =imageService.getImgAsResource(imgFileName);

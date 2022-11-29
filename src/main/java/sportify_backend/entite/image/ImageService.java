@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 @Service
 public class ImageService {
-    @Value("${project.target}")
+    @Value("./src/main/resources/")
     private String imgPath;
 
     public Resource getImgAsResource(String imgFileName) throws MalformedURLException, FileNotFoundException {
