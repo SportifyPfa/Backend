@@ -24,7 +24,8 @@ public class Terrain {
 	private String disponibility_from;
 	private String disponibility_to;
 	private int price;
-	private String image;
+	@Column(name = "imgfilename")
+	private String imgFileName;
 	private String location;
 	private String description;
 }

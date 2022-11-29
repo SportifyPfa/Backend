@@ -3,6 +3,7 @@ package sportify_backend.entite.terrain;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class TerrainController {
 
 
 	@PostMapping("/save")
-	public ResponseEntity<Terrain> saveTerrain(@RequestBody Terrain t) {
-		return new ResponseEntity(terrainService.saveTerrain(t), HttpStatus.CREATED);
+	public ResponseEntity<Terrain> saveTerrain(@RequestPart Terrain terrain,@RequestPart MultipartFile img) {
+		return new ResponseEntity(terrainService.saveTerrain(terrain,img), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/all")
@@ -40,8 +41,8 @@ public class TerrainController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Terrain> updateTerrain(@RequestBody Terrain terrain) {
-		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain));
+	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart MultipartFile img) {
+		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain,img));
 	}
 	
 }
