@@ -29,9 +29,11 @@ public class TerrainService {
     }
 
     public Terrain saveTerrain(Terrain terrain,MultipartFile img) {
-        String imgName =img.getOriginalFilename();
-        terrain.setImgFileName(imgName);
-        imageService.storeImg(img,imgName);
+        if (img != null){
+            String imgName =img.getOriginalFilename();
+            terrain.setImgFileName(imgName);
+            imageService.storeImg(img,imgName);
+        }
         return terrainRepository.save(terrain);
     }
 
