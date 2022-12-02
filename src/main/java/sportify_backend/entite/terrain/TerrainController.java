@@ -19,7 +19,7 @@ public class TerrainController {
 
 
 	@PostMapping("/save")
-	public ResponseEntity<Terrain> saveTerrain(@RequestPart Terrain terrain,@RequestPart MultipartFile img) {
+	public ResponseEntity<Terrain> saveTerrain(@RequestPart Terrain terrain,@RequestPart(required = false)MultipartFile img) {
 		return new ResponseEntity(terrainService.saveTerrain(terrain,img), HttpStatus.CREATED);
 	}
 
@@ -41,7 +41,7 @@ public class TerrainController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart MultipartFile img) {
+	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart(required = false) MultipartFile img) {
 		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain,img));
 	}
 	

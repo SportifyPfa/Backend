@@ -32,7 +32,11 @@ public class ImageService {
         try{
             byte[] bytes = img.getBytes();
             Path path = Paths.get( imgPath +'/'+ fileName);
-            Files.write(path, bytes);
+            if(Files.notExists(path)) {
+                Files.write(path, bytes);
+            }else {
+                throw new RuntimeException("Image name already exists please change it : ");
+            }
         } catch (Exception e) {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
