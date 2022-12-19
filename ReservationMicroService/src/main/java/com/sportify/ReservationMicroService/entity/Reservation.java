@@ -2,6 +2,8 @@ package com.sportify.ReservationMicroService.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,23 +26,52 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Reservation {
 	@Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
 	 @Column (name = "date_From")
-	 @NotNull
+
 	 private Date dateFrom;
 	 
 	 @Column (name = "date_To")
-	 @NotNull
+
 	 private Date dateTo;
 	 
-	@ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "user_id")
+@Transient
     private User user;
+
+private int userId;
+
+@Transient
+
+private Terrain terrain;
+
+private int terrainId;
 	 
-	@ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "terrain_id")
-    private Terrain terrain;
+
+
+	public Terrain getTerrain() {
+	return terrain;
+}
+
+public void setTerrain(Terrain terrain) {
+	this.terrain = terrain;
+}
+
+	public int getTerrainId() {
+	return terrainId;
+}
+
+public void setTerrainId(int terrainId) {
+	this.terrainId = terrainId;
+}
+
+	public int getUserId() {
+	return userId;
+}
+
+public void setUserId(int userId) {
+	this.userId = userId;
+}
 
 	public int getId() {
 		return id;
@@ -73,13 +105,7 @@ public class Reservation {
 		this.user = user;
 	}
 
-	public Terrain getTerrain() {
-		return terrain;
-	}
 
-	public void setTerrain(Terrain terrain) {
-		this.terrain = terrain;
-	}
 	
 	
 

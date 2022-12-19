@@ -33,20 +33,18 @@ public class ReservationController {
 	@Autowired
 	TerrainClient tClient;
 	
-	@PostMapping(value = "/{userId}")
-    public ResponseEntity<Reservation> saveReservation(@RequestBody Reservation res,@PathVariable int userId,
-    		HttpServletRequest request){
-		User user = jclient.getUserById(userId);  
+	@PostMapping(value = "/{userId}/{id}")
+    public ResponseEntity<Reservation> saveReservation(@RequestBody Reservation res,@PathVariable int userId,@PathVariable int id){
+
 		
-		res.setUser(user);	 
-	    rs.saveReservation(res);
-	    return new ResponseEntity(rs.saveReservation(res), HttpStatus.CREATED);
-			
-	}
-	 @GetMapping("/data")
-     public ResponseEntity<Reservation> getStudentInfo() {
-       
-		 return new ResponseEntity(rs.findAll(), HttpStatus.CREATED);
+		    return new ResponseEntity(rs.saveReservation(res,userId,id), HttpStatus.CREATED);
+		}
+	
+	
+	 @GetMapping("/{id}")
+     public ResponseEntity<Reservation> getUSerReservation(@PathVariable int id) {
+		
+		 return new ResponseEntity(rs.findReservationUser(id), HttpStatus.CREATED);
      }
 
 

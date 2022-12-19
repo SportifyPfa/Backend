@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sportify.ReservationMicroService.entity.User;
 
-@FeignClient(name = "UserMicroService", url = "http://localhost:8811/")
+@FeignClient(name = "USERMICROSERVICE")
 public interface JoueurClient {
-	 @GetMapping(value = "/users/{id}")
+	 @GetMapping(value = "/user/users/{id}")
 	  public User getUserById(@PathVariable("id") int id);
 }

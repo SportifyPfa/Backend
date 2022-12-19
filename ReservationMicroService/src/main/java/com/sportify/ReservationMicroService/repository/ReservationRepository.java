@@ -7,5 +7,6 @@ import com.sportify.ReservationMicroService.entity.Reservation;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+	public Reservation findById(int id);
 
 }

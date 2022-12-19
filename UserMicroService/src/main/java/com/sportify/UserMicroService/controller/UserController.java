@@ -33,6 +33,9 @@ public class UserController {
 	    */
 	@Autowired
     private UserRepository ur;
+	
+	@Autowired
+    private UserRoleRepository urole;
     
     @Autowired
     private UserRoleRepository userRoleRepository;
@@ -58,23 +61,15 @@ public class UserController {
 	    }
 
 	    @PostMapping (value = "/users")
-	    public ResponseEntity<User> addUser(@RequestBody User user, HttpServletRequest request){
+	    public ResponseEntity<User> addUser(@RequestBody User user){
+	    	urole.save(user.getRole());
+
 	    	
-	    	if(user != null)
-	    		try {
-	    			UserRole role = userRoleRepository.findUserRoleByRoleName("Joueur");
-	    	        user.setRole(role);
-	    	        
 	    			//userService.saveUser(user);
 	    			return new ResponseEntity(ur.save(user), HttpStatus.CREATED);
 	    				//	new ResponseEntity<User>(
 	    				//	user,
 	    					//headerGenerator.getHeadersForSuccessPostMethod(request, user.getId()),
-	    					//HttpStatus.CREATED);
-	    		}catch (Exception e) {
-	    			e.printStackTrace();
-	    			return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-	    	return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+	    	
 	    }
 }

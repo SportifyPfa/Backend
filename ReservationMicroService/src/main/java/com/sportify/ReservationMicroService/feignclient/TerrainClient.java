@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sportify.ReservationMicroService.entity.Terrain;
 
-@FeignClient(name = "Backend", url = "http://localhost:8080/")
+@FeignClient(name = "SPORTIFYENTITY")
 public interface TerrainClient {
 	
 	 @GetMapping(value = "/terrain/{id}")
-	    public Terrain getTerrainById(@PathVariable(value = "id") int terrainId);
+	    public Terrain findTerrainById(@PathVariable(value = "id") int id);
 
 }

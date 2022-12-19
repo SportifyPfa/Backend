@@ -31,11 +31,10 @@ public class RegisterController {
    // private HeaderGenerator headerGenerator;
     
     @PostMapping(value = "/registration")
-    public ResponseEntity<User> addUser(@RequestBody User user, HttpServletRequest request){
+    public ResponseEntity<User> addUser(@RequestBody User user){
     	if(user != null)
     		try {
-    			UserRole role = userRoleRepository.findUserRoleByRoleName("Joueur");
-    	        user.setRole(role);
+    		
     	        
     			//userService.saveUser(user);
     			return new ResponseEntity(ur.save(user), HttpStatus.CREATED);
