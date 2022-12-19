@@ -1,0 +1,9 @@
+com\sportify\ReservationMicroService\repository\ReservationRepository.class
+com\sportify\ReservationMicroService\feignclient\TerrainClient.class
+com\sportify\ReservationMicroService\ReservationMicroServiceApplication.class
+com\sportify\ReservationMicroService\controller\ReservationController.class
+com\sportify\ReservationMicroService\feignclient\JoueurClient.class
+com\sportify\ReservationMicroService\entity\User.class
+com\sportify\ReservationMicroService\entity\Terrain.class
+com\sportify\ReservationMicroService\entity\Reservation.class
+com\sportify\ReservationMicroService\service\ReservationService.class

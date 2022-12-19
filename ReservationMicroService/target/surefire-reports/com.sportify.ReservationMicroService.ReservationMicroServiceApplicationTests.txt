@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.sportify.ReservationMicroService.ReservationMicroServiceApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.953 s <<< FAILURE! - in com.sportify.ReservationMicroService.ReservationMicroServiceApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@65bb4cb9 testClass = com.sportify.ReservationMicroService.ReservationMicroServiceApplicationTests, locations = [], classes = [com.sportify.ReservationMicroService.ReservationMicroServiceApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62010f5c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5c44c582, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@74589991, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@9da1, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@a3d9978, org.springframework.boot.test.context.SpringBootTestAnnotation@eedbe072], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+Caused by: org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.IllegalStateException: PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.sportify.ReservationMicroService.entity.Terrain) `sqmMultiTableInsertStrategy` interpretation
+
+Caused by: jakarta.persistence.PersistenceException: 
+[PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.IllegalStateException: PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.sportify.ReservationMicroService.entity.Terrain) `sqmMultiTableInsertStrategy` interpretation
+
+Caused by: java.lang.IllegalStateException: 
+PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.sportify.ReservationMicroService.entity.Terrain) `sqmMultiTableInsertStrategy` interpretation
+
+
