@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  app:
+    container_name: springboot-gateway
+    image: gateway
+    build: ./
+    ports:
+      - "8900:8900"
+ 

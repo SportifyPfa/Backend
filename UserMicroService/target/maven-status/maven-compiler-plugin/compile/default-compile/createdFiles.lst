@@ -1,0 +1,9 @@
+com\sportify\UserMicroService\http\header\HeaderGenerator.class
+com\sportify\UserMicroService\entity\User.class
+com\sportify\UserMicroService\repository\UserRoleRepository.class
+com\sportify\UserMicroService\controller\RegisterController.class
+com\sportify\UserMicroService\controller\UserController.class
+com\sportify\UserMicroService\UserMicroServiceApplication.class
+com\sportify\UserMicroService\repository\UserRepository.class
+com\sportify\UserMicroService\entity\UserRole.class
+com\sportify\UserMicroService\service\UserService.class

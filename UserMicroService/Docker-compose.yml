@@ -1,8 +1,8 @@
 version: '3.1'
 services:
   app:
-    container_name: springboot-postgresql-user
-    image: springboot-postgresql
+    container_name: springboot-user
+    image: user
     build: ./
     ports:
       - "8811:8811"
@@ -11,7 +11,7 @@ services:
   postgresdb:
     image: postgres
     ports:
-      - "5432:5432"
+      - "5433:5433"
     environment:
       - POSTGRES_PASSWORD=postgrespw
       - POSTGRES_USER=postgres
