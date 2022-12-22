@@ -1,19 +1,30 @@
 version: '3.1'
 services:
+  eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+  eureka-client:
+    build: eureka-client
+    ports:
+      - "8811:8811"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
   app:
-    container_name:  spring-userr
-    image: usermicroservice
+    container_name: springboot-userms
+    image: springboot-postgresqll
+
     build: ./
     ports:
       - "8811:8811"
     depends_on:
-      - postgresdb
-  postgresdb:
+      - postgresd
+  postgresd:
     image: postgres
-    container_name: postgres-userr
     ports:
-      - "5455:5455"
+      - "5422:5422"
     environment:
       - POSTGRES_PASSWORD=postgrespw
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=user
+      - POSTGRES_DB=users
+      - PGPORT=5422
