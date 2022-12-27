@@ -22,6 +22,8 @@ public class AppUser {
     private String username;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    @Column(name = "age")
+    private String age;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<AppRole> appRoles=new ArrayList<>();
 }
