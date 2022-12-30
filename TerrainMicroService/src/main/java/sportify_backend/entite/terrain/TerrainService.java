@@ -3,6 +3,7 @@ package sportify_backend.entite.terrain;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import sportify_backend.entite.exception.ResourceNotFoundException;
+import sportify_backend.entite.feignClient.JoueurClient;
 import sportify_backend.entite.image.ImageService;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class TerrainService {
 
     private final TerrainRepository terrainRepository;
     private final ImageService imageService;
+    private JoueurClient jc;
 
     public TerrainService(TerrainRepository terrainRepository, ImageService imageService) {
         this.terrainRepository = terrainRepository;
@@ -51,5 +53,15 @@ public class TerrainService {
         terrainRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Terrain Not Found with this ID: " + id));
         terrainRepository.deleteById(id);
     }
+
+
+	public List<Terrain> findTerrainByEntity(String name) {
+		// TODO Auto-generated method stub
+		
+		return terrainRepository.findByEntity(jc.loadByUsername(name));
+	}
+    
+    
+  
 
 }

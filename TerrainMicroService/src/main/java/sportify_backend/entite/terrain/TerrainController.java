@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class TerrainController {
 
 	@PostMapping("/save")
 	public ResponseEntity<Terrain> saveTerrain(@RequestPart Terrain terrain,@RequestPart(required = false)MultipartFile img) {
+		
 		return new ResponseEntity(terrainService.saveTerrain(terrain,img), HttpStatus.CREATED);
 	}
 
@@ -43,6 +45,16 @@ public class TerrainController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart(required = false) MultipartFile img) {
 		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain,img));
+	}
+	
+	@GetMapping("seance/{id}")
+	public ResponseEntity<List<Seance>> getSeance(@PathVariable(required = true) Long id) {
+		return ResponseEntity.accepted().body(terrainService.findTerrainById(id).getSeances());
+	}
+	
+	@GetMapping("entity/{name}")
+	public ResponseEntity<List<Terrain>> getEntityTerrain(@PathVariable(required = true) String name) {
+		return ResponseEntity.accepted().body(terrainService.findTerrainByEntity(name));
 	}
 	
 }

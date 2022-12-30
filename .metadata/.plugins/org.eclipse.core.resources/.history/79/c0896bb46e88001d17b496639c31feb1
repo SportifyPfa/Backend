@@ -1,0 +1,10 @@
+package sportify_backend.entite.terrain;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Seance {
+	
+	
+
+}

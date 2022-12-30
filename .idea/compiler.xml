@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="EurekaServer" />
+        <module name="Entity" />
+        <module name="ReservationMicroService" />
+        <module name="authentification" />
+        <module name="GatewayApi" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authentification" target="17" />
+      <module name="entite" target="17" />
+      <module name="Entity" target="17" />
+      <module name="EurekaServer" target="17" />
+      <module name="GatewayApi" target="17" />
+      <module name="ReservationMicroService" target="17" />
+      <module name="UserMicroService" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Entity" options="-parameters" />
+      <module name="EurekaServer" options="-parameters" />
+      <module name="GatewayApi" options="-parameters" />
+      <module name="ReservationMicroService" options="-parameters" />
+      <module name="UserMicroService" options="-parameters" />
+      <module name="authentification" options="-parameters" />
+      <module name="entite" options="-parameters" />
+    </option>
+  </component>
+</project>
