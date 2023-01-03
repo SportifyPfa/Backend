@@ -4,24 +4,30 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
 public class ImageService {
-    @Value("target")
-    private String imgPath;
+
 
     public Resource getImgAsResource(String imgFileName) throws MalformedURLException, FileNotFoundException {
             //create instance
-            Path dirPath = Paths.get(imgPath);
-            Path file = dirPath.resolve(imgFileName);
+        Path targetPath = null;
+        try {
+            targetPath = Paths.get(getClass().getResource("/").toURI()).getParent();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        Path file = targetPath.resolve(imgFileName);
             Resource resource = new UrlResource(file.toUri());
             if(resource.exists()){
                 return resource;
@@ -31,9 +37,9 @@ public class ImageService {
     public void storeImg(MultipartFile img , String fileName) {
         try{
             byte[] bytes = img.getBytes();
-            Path path = Paths.get( imgPath +'/'+ fileName);
-            System.out.println(path);
-            System.out.println(bytes);
+            Path targetPath = Paths.get(getClass().getResource("/").toURI()).getParent();
+            String paths = targetPath.toString();
+            Path path = Paths.get( paths +'/'+ fileName);
             if(Files.notExists(path)) {
                 Files.write(path,bytes);
             }else {
@@ -45,8 +51,13 @@ public class ImageService {
     }
 
     public void deleteImage(String imgFileName) throws IOException {
-        Path dirPath = Paths.get(imgPath);
-        Path file = dirPath.resolve(imgFileName);
+        Path targetPath = null;
+        try {
+            targetPath = Paths.get(getClass().getResource("/").toURI()).getParent();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        Path file = targetPath.resolve(imgFileName);
         Files.deleteIfExists(file);
     }
 

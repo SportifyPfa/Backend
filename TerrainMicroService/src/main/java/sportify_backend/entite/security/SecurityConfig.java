@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // http.authorizeRequests().antMatchers(HttpMethod.GET,"/terrain/*").permitAll();
         http.authorizeRequests()
-                .antMatchers( "/target/**").permitAll()
+                .antMatchers( "/target/**","/terrain/images/**").permitAll()
                 .anyRequest().authenticated();
         http.addFilter(new JwtAuthentificationFilter(authenticationManagerBean()));
         http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
