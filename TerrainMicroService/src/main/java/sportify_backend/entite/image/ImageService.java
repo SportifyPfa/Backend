@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 @Service
 public class ImageService {
-    @Value("./target/")
+    @Value("target")
     private String imgPath;
 
     public Resource getImgAsResource(String imgFileName) throws MalformedURLException, FileNotFoundException {
@@ -32,8 +32,10 @@ public class ImageService {
         try{
             byte[] bytes = img.getBytes();
             Path path = Paths.get( imgPath +'/'+ fileName);
+            System.out.println(path);
+            System.out.println(bytes);
             if(Files.notExists(path)) {
-                Files.write(path, bytes);
+                Files.write(path,bytes);
             }else {
                 throw new RuntimeException("Image name already exists please change it : ");
             }

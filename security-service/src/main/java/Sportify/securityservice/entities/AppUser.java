@@ -24,6 +24,8 @@ public class AppUser {
     private String password;
     @Column(name = "age")
     private String age;
+    @Column(name = "gendre")
+    private String gendre;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<AppRole> appRoles=new ArrayList<>();
 }
