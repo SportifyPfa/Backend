@@ -32,7 +32,7 @@ public class SecurityServiceApplication {
 	@Bean
 	CommandLineRunner start (AccountServiceImpl accountService){
 		return args ->{
-				accountService.addNewUser(new AppUser(null, "yassine", "123",new ArrayList<>()));
+				accountService.addNewUser(new AppUser(null, "yassine", "123","10","homme",new ArrayList<>()));
 				accountService.addNewRole(new AppRole(null, "joueur"));
 				accountService.addNewRole(new AppRole(null, "entite"));
 				accountService.addRoleToUser("yassine", "joueur");
