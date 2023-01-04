@@ -27,6 +27,8 @@ public class ReservationMicroServiceApplication {
 				registry.addMapping("/order/**").allowedOrigins("*").allowedMethods("*");
 				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
 				registry.addMapping("SPORTIFYENTITY/terrain/**").allowedOrigins("*").allowedMethods("*");
+				
+				
 			}
 		};
 	}

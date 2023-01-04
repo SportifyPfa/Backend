@@ -1,5 +1,6 @@
 package sportify_backend.entite.terrain;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,11 @@ public class SeanceService {
 	}
 	public List<Integer> getMois(){
 		return sr.getMois();
+	}
+
+	public List<Seance> findSeanceByDate(Date d) {
+		// TODO Auto-generated method stub
+		
+		return sr.findSeanceByDate(d.getDate(),d.getMonth()+1,d.getYear()+1900);
 	}
 }

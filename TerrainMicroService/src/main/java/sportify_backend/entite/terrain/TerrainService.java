@@ -100,7 +100,7 @@ private List<Seance> calculSeance(Date ouverture,Date Fermeture){
         t.setDescription(terrain.getDescription());
         t.setDisponibility_from(terrain.getDisponibility_from());
         t.setDisponibility_to(terrain.getDisponibility_to());
-        t.setEntity(terrain.getEntity());
+   
         t.setLocation(terrain.getLocation());
         t.setName(terrain.getName());
    
@@ -130,6 +130,12 @@ private List<Seance> calculSeance(Date ouverture,Date Fermeture){
 		// TODO Auto-generated method stub
 		
 		return terrainRepository.findSeanceById( id);
+	}
+
+
+	public List<Terrain> findTerrainByEntityDate(String name, Date d) {
+		// TODO Auto-generated method stub
+		return terrainRepository.findTerrainByEntityDate( name,d.getDate(),d.getMonth()+1,d.getYear()+1900);
 	}
 
 }

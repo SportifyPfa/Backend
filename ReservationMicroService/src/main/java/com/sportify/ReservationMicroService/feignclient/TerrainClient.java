@@ -1,5 +1,6 @@
 package com.sportify.ReservationMicroService.feignclient;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sportify.ReservationMicroService.entity.Seance;
 import com.sportify.ReservationMicroService.entity.Terrain;
@@ -27,4 +29,13 @@ public interface TerrainClient {
 	public List<Terrain> getEntityTerrain(@PathVariable(required = true,name="name") String name, @RequestHeader("Authorization") String bearerToken);
 	@GetMapping("/terrain/mois")
 	public List<Integer> getMois( @RequestHeader("Authorization") String bearerToken);
+	
+	@GetMapping("/terrain/all")
+	public List<Terrain> findAllTerrain(@RequestHeader("Authorization") String bearerToken);
+	
+	@GetMapping("/terrain/seanceDate")	
+	public List<Seance> findSeanceByDate(@RequestPart Date d, @RequestHeader("Authorization") String bearerToken);
+	
+	@GetMapping("terrain/entityDate/{name}")
+	public List<Terrain> findTerrainByEntityDate(@PathVariable(required = true,name="name") String name, @RequestPart Date d, @RequestHeader("Authorization") String bearerToken);
 }

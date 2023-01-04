@@ -1,0 +1,48 @@
+******* Api Terrain : **********
+
+ POST : http://localhost:8900/SPORTIFYENTITY/terrain/save : Pour enregistrer un terrain prend en body requestPart de terrain et de image
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/all : La liste de tous les terrain 
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/{id} : findById
+
+DELETE : http://localhost:8900/SPORTIFYENTITY/terrain/delete/{id} : supprimer terrain
+
+PUT : http://localhost:8900/SPORTIFYENTITY/terrain/{id} : update terrain
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/seances/{id} : get seances d'un terrain
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/seance/{id} : findSeanceById
+
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/entity/{name} : list des terrain d'une entity donné
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/seanceDate : liste des seances dans une date
+
+GET : http://localhost:8900/SPORTIFYENTITY/terrain/entityDate/{name} : liste des terrains d'une entity dans une date donnée au body as requestpart
+
+
+
+******* Api Reservation : **********
+
+POST : http://localhost:8900/RESERVATIONMICROSERVICE/order/{idTerrain}/{idSeance} : reserver un terrain dans une seance
+
+
+GET : http://localhost:8900/RESERVATIONMICROSERVICE/order/orders : liste des reservations d'un utilisateur
+
+GET : http://localhost:8900/RESERVATIONMICROSERVICE/order/nonReserve : liste des terrain non reserve
+
+GET : http://localhost:8900/RESERVATIONMICROSERVICE/order/NonComplet : liste des terrains réservé ms avec des places disponibles
+
+GET : http://localhost:8900/RESERVATIONMICROSERVICE/order/date/{id} : liste des reservation d'un terrain dans une date(annee-mois-jour)
+
+GET : http://localhost:8900/RESERVATIONMICROSERVICE/{entity} : liste des terrains reservé d'une entité dans une date donnée 
+
+
+
+
+
+
+
+
+

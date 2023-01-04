@@ -38,6 +38,9 @@ public class Seance {
 	private int nbreParticipant;
 	
 
+	public Seance() {
+		super();
+	}
 	public int getJour() {
 		return jour;
 	}

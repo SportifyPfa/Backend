@@ -7,7 +7,6 @@ import javax.persistence.*;
 import lombok.*;
 
 @Data
-@Entity
 public class Terrain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

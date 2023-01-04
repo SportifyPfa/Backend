@@ -47,10 +47,10 @@ public class ReservationController {
 		 return new ResponseEntity(rs.findReservationUser(), HttpStatus.CREATED);
      }
 	 
-	 @GetMapping("/mois")
+	/* @GetMapping("/mois")
      public ResponseEntity<List<countMois>> nbreTerrainReserveParMois() {
 		 return new ResponseEntity(rs.nbreTerrainReserveParMois(), HttpStatus.CREATED);
-     }
+     }*/
 	 
 	 @GetMapping("/nonReserve")
      public ResponseEntity<List<Terrain>> terrainNonReserve() {
@@ -61,7 +61,11 @@ public class ReservationController {
      public ResponseEntity<List<Terrain>> terrainNonComplet() {
 		 return new ResponseEntity(rs.findTerrainNonComplet(), HttpStatus.CREATED);
      }
-	 @GetMapping("/{entity}")
+	 @GetMapping("/date/{id}")
+	 public ResponseEntity<List<Reservation>> findReservationByTerrainDate(@RequestPart Date d,@PathVariable(name="id") Long id){
+		 return new ResponseEntity(rs.findReservationByTerrainDate(d,id), HttpStatus.CREATED);
+	 }
+	@GetMapping("/{entity}")
 	 public ResponseEntity<List<Terrain>> findTerrainByEntityDate(@PathVariable(name="entity") String entity,@RequestPart Date d){
 		 return new ResponseEntity(rs.findTerrainByEntityDate(entity,d), HttpStatus.CREATED);
 		 

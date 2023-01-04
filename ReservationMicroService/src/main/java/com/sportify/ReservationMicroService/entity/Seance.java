@@ -17,7 +17,7 @@ import lombok.Setter;
 
 
 @Data
-@Entity
+
 public class Seance {
 	
 	@Id

@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   app:
-    container_name: springboot-Gateway
+    container_name: gateway
     image: gateway
     build: ./
     ports:

@@ -15,5 +15,7 @@ public interface SeanceRepository extends JpaRepository<Seance,Long> {
 	public Seance findById(long id);
 @Query("select s.mois from Seance s group by s.mois")
 	List<Integer> getMois();
+@Query("select s from Seance s where s.jour = ?1 and s.mois=?2 and s.annee = ?3")
+List<Seance> findSeanceByDate(int jour, int mois, int annee);
 
 }

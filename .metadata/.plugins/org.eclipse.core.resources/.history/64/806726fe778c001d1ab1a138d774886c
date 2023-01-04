@@ -1,0 +1,33 @@
+package com.sportify.ReservationMicroService.repository;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.sportify.ReservationMicroService.entity.Reservation;
+import com.sportify.ReservationMicroService.entity.Seance;
+import com.sportify.ReservationMicroService.entity.Terrain;
+
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+	public Reservation findById(int id);
+	@Query(value="select * from reservation r where r.terrain_id = ?1",nativeQuery = true)
+	public List<Reservation>  findByTerrainByDate(long id);
+	@Query(value="select * from reservation r, reservation_joueurs rj where r.id = rj.reservation_id and rj.joueurs like ?1",nativeQuery = true)
+	public List<Reservation> findReservationUser(String id);
+	//@Query(value="select s.mois,count(t) from reservation r,seance s,terrain t where r.terrain_id = t.id and  s.id = r.seance_id group by s.mois",nativeQuery = true)
+	//public List<countMois> nbreTerrainReserveParMois(List<Long> name);
+	
+	//@Query("select t from Reservation r,Terrain t,Seance s where r.terrainId = t.id and r.seanceId = s.id and t.entity like ?1 and s.disponibilite = true and  s.jour = ?2 and s.mois = ?3 and s.annee = ?4")
+	//List<Terrain> findTerrainByEntityDate(String name, int jour,int mois, int annee);
+	public interface countMois{
+		int getMois();
+	
+		int getCount();
+	}
+	@Query("select r.terrainId from Reservation r group by r.terrainId")
+public List<Long> findTerrains();
+}

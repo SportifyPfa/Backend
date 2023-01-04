@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -68,5 +68,17 @@ public class TerrainController {
 	@GetMapping("/mois")
 	public ResponseEntity<List<Integer>> getMois() {
 		return ResponseEntity.accepted().body(ss.getMois());
+	}
+	@GetMapping("/seanceDate")	
+	public ResponseEntity<List<Seance>> findSeanceByDate(@RequestPart Date d){
+		return ResponseEntity.accepted().body(ss.findSeanceByDate(d));
+
+	}
+	
+	@GetMapping("/entityDate/{name}")
+	public ResponseEntity<List<Terrain>> findTerrainByEntityDate(@PathVariable(required = true,name="name") String name, @RequestPart Date d){
+		return ResponseEntity.accepted().body(terrainService.findTerrainByEntityDate(name,d));
+
+		
 	}
 }
