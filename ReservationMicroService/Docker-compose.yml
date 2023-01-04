@@ -11,8 +11,8 @@ services:
   postgresdb:
     image: postgres
     ports:
-      - "5434:5434"
+      - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=postgrespw
-      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=I6wgdtxf5QurHCon2sDF3IX2cKtLywyt
+      - POSTGRES_USER=reservation_user
       - POSTGRES_DB=reservation

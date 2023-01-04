@@ -72,11 +72,4 @@ public class AccountServiceImpl implements AccountService {
         appUserRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User Not Found with this ID: " + id));
         appUserRepository.deleteById(id);
     }
-
-	@Override
-	public List<AppUser> getEntities() {
-		// TODO Auto-generated method stub
-		AppRole role = appRoleRepository.findByRoleName("entite");
-		return appUserRepository.findByAppRoles( role);
-	}
 }

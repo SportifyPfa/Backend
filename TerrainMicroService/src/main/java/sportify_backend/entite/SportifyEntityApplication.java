@@ -18,7 +18,7 @@ public class SportifyEntityApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SportifyEntityApplication.class, args);
 	}
-/*
+
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -28,5 +28,5 @@ public class SportifyEntityApplication {
 				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
 			}
 		};
-	}*/
+	}
 }

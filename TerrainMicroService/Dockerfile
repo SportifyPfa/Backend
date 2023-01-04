@@ -1,4 +1,4 @@
 FROM openjdk:17
 COPY target target
-ADD target/sportify_entity.jar app.jar
+ADD target/Entity-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]

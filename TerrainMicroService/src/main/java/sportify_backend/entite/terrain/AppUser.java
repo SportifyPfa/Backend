@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,4 +20,12 @@ public class AppUser {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<AppRole> appRoles=new ArrayList<>();
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+    
+    
 }

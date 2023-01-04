@@ -15,6 +15,5 @@ public interface AccountService {
     List<AppUser> lisUsers();
     List<AppRole> lisRoles();
     void deleteUser(long id);
-    List<AppUser> getEntities();
 
 }

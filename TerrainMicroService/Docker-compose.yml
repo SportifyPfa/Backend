@@ -1,8 +1,8 @@
 version: '3.1'
 services:
   app:
-    container_name: springboot-postgresqll
-    image: springboot-postgresql
+    container_name: springboot-entity
+    image: springboot-entity
     build: ./
     ports:
       - "8080:8080"
@@ -13,6 +13,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=postgrespw
-      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=IoMOB9IVeHuN3FTOhrOL00AcLVGxK1RI
+      - POSTGRES_USER=terrain_user
       - POSTGRES_DB=terrain

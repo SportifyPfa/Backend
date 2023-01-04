@@ -2,6 +2,7 @@ package sportify_backend.entite.terrain;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,33 +23,29 @@ public class Terrain {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
-	private int numberOfPlayer;
-	private String disponibility_from;
-	private String disponibility_to;
+
+	private Date disponibility_from;
+	private Date disponibility_to;
 	private int price;
 	@Column(name = "imgfilename")
 	private String imgFileName;
 	private String location;
 	private String description;
-	
-	@ManyToOne
-	private AppUser entity;
+	private String entity;
 	@OneToMany
 	private List<Seance> seances;
-	@OneToMany 
-	private List<AppUser> joueurs;
 	
-	public AppUser getEntity() {
+	public String getEntity() {
 		return entity;
 	}
-	public void setEntity(AppUser entity) {
+	public void setEntity(String entity) {
 		this.entity = entity;
 	}
-	public List<AppUser> getJoueurs() {
-		return joueurs;
+	public List<Seance> getSeances() {
+		return seances;
 	}
-	public void setJoueurs(List<AppUser> joueurs) {
-		this.joueurs = joueurs;
+	public void setSeances(List<Seance> seances) {
+		this.seances = seances;
 	}
 	public Long getId() {
 		return id;
@@ -62,22 +59,17 @@ public class Terrain {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getNumberOfPlayer() {
-		return numberOfPlayer;
-	}
-	public void setNumberOfPlayer(int numberOfPlayer) {
-		this.numberOfPlayer = numberOfPlayer;
-	}
-	public String getDisponibility_from() {
+
+	public Date getDisponibility_from() {
 		return disponibility_from;
 	}
-	public void setDisponibility_from(String disponibility_from) {
+	public void setDisponibility_from(Date disponibility_from) {
 		this.disponibility_from = disponibility_from;
 	}
-	public String getDisponibility_to() {
+	public Date getDisponibility_to() {
 		return disponibility_to;
 	}
-	public void setDisponibility_to(String disponibility_to) {
+	public void setDisponibility_to(Date disponibility_to) {
 		this.disponibility_to = disponibility_to;
 	}
 	public int getPrice() {
@@ -103,12 +95,6 @@ public class Terrain {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public List<Seance> getSeances() {
-		return seances;
-	}
-	public void setSeances(List<Seance> seances) {
-		this.seances = seances;
 	}
 	
 	

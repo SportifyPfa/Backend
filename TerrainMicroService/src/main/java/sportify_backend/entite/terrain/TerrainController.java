@@ -1,11 +1,11 @@
 package sportify_backend.entite.terrain;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -13,6 +13,8 @@ import java.util.List;
 public class TerrainController {
 
 	private TerrainService terrainService;
+	@Autowired
+	private SeanceService ss;
 
 	public TerrainController(TerrainService terrainService) {
 		this.terrainService = terrainService;
@@ -21,7 +23,6 @@ public class TerrainController {
 
 	@PostMapping("/save")
 	public ResponseEntity<Terrain> saveTerrain(@RequestPart Terrain terrain,@RequestPart(required = false)MultipartFile img) {
-		
 		return new ResponseEntity(terrainService.saveTerrain(terrain,img), HttpStatus.CREATED);
 	}
 
@@ -43,18 +44,29 @@ public class TerrainController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart(required = false) MultipartFile img) {
-		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain,img));
+	public ResponseEntity<Terrain> updateTerrain(@RequestPart Terrain terrain,@RequestPart(required = false) MultipartFile img,@PathVariable(name="id") long id) {
+		return ResponseEntity.accepted().body(terrainService.updateTerrain(terrain,img,id));
 	}
-	
-	@GetMapping("seance/{id}")
-	public ResponseEntity<List<Seance>> getSeance(@PathVariable(required = true) Long id) {
+	@GetMapping("/seances/{id}")
+	public ResponseEntity<List<Seance>> getSeance(@PathVariable(required = true,name = "id") Long id) {
 		return ResponseEntity.accepted().body(terrainService.findTerrainById(id).getSeances());
 	}
+	@GetMapping("/seance/{id}")
+	public  ResponseEntity<Seance> findSeanceById(@PathVariable(name = "id") long id) {
+		return ResponseEntity.accepted().body(ss.findById(id));
+	}
 	
-	@GetMapping("entity/{name}")
+	@GetMapping("/entity/{name}")
 	public ResponseEntity<List<Terrain>> getEntityTerrain(@PathVariable(required = true) String name) {
 		return ResponseEntity.accepted().body(terrainService.findTerrainByEntity(name));
 	}
 	
+	@PostMapping("/updateS/{id}")
+	public ResponseEntity<Seance> updateSeance(@RequestPart Seance s,@PathVariable(name="id") long id) {
+		return ResponseEntity.accepted().body(ss.update(s,id));
+	}
+	@GetMapping("/mois")
+	public ResponseEntity<List<Integer>> getMois() {
+		return ResponseEntity.accepted().body(ss.getMois());
+	}
 }
